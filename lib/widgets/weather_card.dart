@@ -20,11 +20,13 @@ class WeatherCard extends StatelessWidget {
           margin: EdgeInsets.all(20),
           padding: EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 112, 107, 107),
+            color: const Color.fromARGB(255, 114, 190, 237),
+            borderRadius: BorderRadius.circular(10),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              // asset for weather
               Lottie.asset(
                 weather.description.contains('rain')
                     ? 'assets/rain.json'
@@ -35,11 +37,13 @@ class WeatherCard extends StatelessWidget {
                 height: 150,
                 width: 150,
               ),
+              //it show the name that user give input in input field
               Text(
                 weather.cityname,
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 5),
+              // it shows the temperatue of city that comes from api
               Text(
                 '${weather.temperature.toStringAsFixed(1)}°C',
                 style: Theme.of(
@@ -50,29 +54,34 @@ class WeatherCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+                  //it shows humidity of cityname that come from api
                   Text(
                     'Humidity: ${weather.humidity}%',
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
-
+                  SizedBox(width: 10),
+                  // it shows windspeed
                   Text(
                     'Wind ${weather.windSpeed}m/s',
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],
               ),
+              SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Column(
                     children: [
+                      //it shows icon widget
                       Icon(Icons.wb_sunny_outlined, color: Colors.orange),
 
                       Text(
                         'Sunrise',
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
-
+                      SizedBox(width: 10),
+                      // it shows time in format 'hh/mm a'
                       Text(
                         formatTime(weather.sunrise),
                         style: Theme.of(context).textTheme.bodyMedium,
@@ -94,11 +103,6 @@ class WeatherCard extends StatelessWidget {
                     ],
                   ),
                 ],
-              ),
-              SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [],
               ),
             ],
           ),

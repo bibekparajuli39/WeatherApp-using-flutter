@@ -41,34 +41,40 @@ class _HomeScreenState extends State<HomeScreen> {
         height: double.infinity,
         child: Padding(
           padding: EdgeInsets.all(8),
-          child: Column(
-            children: [
-              Text("Weather App"),
-              SizedBox(height: 25),
-              TextField(
-                controller: _controller,
-                style: TextStyle(color: Colors.black),
-                decoration: InputDecoration(
-                  hintText: "enter a city",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Text("Weather App"),
+                SizedBox(height: 25),
+                // take a text from user and aslo show hint text so user understand
+                TextField(
+                  controller: _controller,
+                  style: TextStyle(color: Colors.black),
+                  decoration: InputDecoration(
+                    hintText: "Enter a city",
+                    hintStyle: TextStyle(
+                      color: const Color.fromARGB(255, 125, 122, 122),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(height: 25),
-              ElevatedButton(
-                onPressed: () {
-                  _getWeather();
-                },
-                child: Text("Get a weather"),
-              ),
-              if (_isloading)
-                Padding(
-                  padding: EdgeInsets.all(20),
-                  child: CircularProgressIndicator(color: Colors.white),
+                SizedBox(height: 25),
+                ElevatedButton(
+                  onPressed: () {
+                    _getWeather();
+                  },
+                  child: Text("Get a weather"),
                 ),
-              if (_weather != null) WeatherCard(weather: _weather!),
-            ],
+                if (_isloading)
+                  Padding(
+                    padding: EdgeInsets.all(20),
+                    child: CircularProgressIndicator(color: Colors.white),
+                  ),
+                if (_weather != null) WeatherCard(weather: _weather!),
+              ],
+            ),
           ),
         ),
       ),
