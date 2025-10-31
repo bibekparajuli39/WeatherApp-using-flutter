@@ -4,9 +4,11 @@ import 'package:lottie/lottie.dart';
 import 'package:weatherapp/models/weather_model.dart';
 
 class WeatherCard extends StatelessWidget {
+  //create a instance for weather class
   final Weather weather;
 
   const WeatherCard({super.key, required this.weather});
+  //creating a function to format date in milliseconds
   String formatTime(int timestemp) {
     final date = DateTime.fromMillisecondsSinceEpoch(timestemp * 1000);
     return DateFormat('hh:mm a').format(date);

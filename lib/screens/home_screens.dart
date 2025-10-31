@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
   bool _isloading = false;
   final TextEditingController _controller = TextEditingController();
   Weather? _weather;
-
+  // fetch a data from api based on user input
   void _getWeather() async {
     setState(() {
       _isloading = true;
