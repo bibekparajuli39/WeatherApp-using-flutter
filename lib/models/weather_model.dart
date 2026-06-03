@@ -6,7 +6,7 @@ class Weather {
   final String description;
   final int sunrise;
   final int sunset;
-
+// constructor of class
   Weather({
     required this.cityname,
     required this.temperature,

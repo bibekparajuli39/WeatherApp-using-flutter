@@ -28,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
       });
     } catch (e) {
       ScaffoldMessenger.of(
+        // ignore: use_build_context_synchronously
         context,
       ).showSnackBar(SnackBar(content: Text("error fetching weather data")));
     }
@@ -36,6 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text("Weather App")),
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
@@ -44,7 +46,10 @@ class _HomeScreenState extends State<HomeScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Text("Weather App"),
+                Text(
+                  "Search for a city/country",
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                ),
                 SizedBox(height: 25),
                 // take a text from user and aslo show hint text so user understand
                 TextField(
@@ -55,6 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     hintStyle: TextStyle(
                       color: const Color.fromARGB(255, 125, 122, 122),
                     ),
+                    prefixIcon: Icon(Icons.search),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -62,10 +68,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: 25),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 45, 52, 236),
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
                   onPressed: () {
                     _getWeather();
                   },
-                  child: Text("Get a weather"),
+                  child: Text(
+                    "Get a weather",
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
                 ),
                 if (_isloading)
                   Padding(

@@ -75,7 +75,7 @@ class WeatherCard extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      //it shows icon widget
+                      //it shows icon widget 
                       Icon(Icons.wb_sunny_outlined, color: Colors.orange),
 
                       Text(
