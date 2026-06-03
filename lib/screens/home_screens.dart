@@ -30,7 +30,12 @@ class _HomeScreenState extends State<HomeScreen> {
       ScaffoldMessenger.of(
         // ignore: use_build_context_synchronously
         context,
-      ).showSnackBar(SnackBar(content: Text("error fetching weather data")));
+      ).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.red,
+          content: Text("error fetching weather data"),
+        ),
+      );
     }
   }
 
@@ -86,9 +91,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (_isloading)
                   Padding(
                     padding: EdgeInsets.all(20),
-                    child: CircularProgressIndicator(color: Colors.white),
+                    child: CircularProgressIndicator(
+                      color: const Color.fromARGB(255, 255, 0, 0),
+                    ),
                   ),
-                if (_weather != null) WeatherCard(weather: _weather!),
+                if (_weather != null)
+                  WeatherCard(weather: _weather!)
+                else
+                  Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Text(
+                      " ${_controller.text.isEmpty ? 'Enter a city name' : 'No weather data available'}",
+                      style: TextStyle(fontSize: 18, color: Colors.black),
+                    ),
+                  ),
               ],
             ),
           ),
